@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1520742829 source:c:\users\jorge\documents\tec\lenguajes de programación\proyectos\proyecto imperativo\fichas\main.c
+	<stdio.h>
+	<stdlib.h>
+
