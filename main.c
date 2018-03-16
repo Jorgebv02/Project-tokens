@@ -110,7 +110,7 @@ void mostrarTablero(matriz tablero, int n){
         }
 
         // Ya esto sería todo el contenido del tablero.
-        for (auxiliar = 1; auxiliar <= n; auxiliar++){
+        for (auxiliar = 0; auxiliar < n; auxiliar++){
             printf("|_");
             if (tablero[contenido][auxiliar] == 1){
                 printf("F_|");
@@ -124,21 +124,27 @@ void mostrarTablero(matriz tablero, int n){
 }
 
 // Método que indica en cual fila y columna poner una ficha.
+// Nota importante: siempre se le pasa una (fila - 1) y la
+// (columna - 1) porque la matriz va de 0 a 4, no de 1 a 5...
 void agregarFicha(matriz tablero, int n, int fila, int columna){
-    if ((fila >= n) || (columna >= n)){
-        printf("Esa posición no existe en el tablero.");
+    // Por aquello de que quieran agregar una ficha en una posición afuera del tablero.
+    if ((fila >= n) || (columna >= (n))){
+        printf("Esa posicion no existe en el tablero.");
     }
+    // En caso de que las posiciones sean correctas.
     else{
-        printf("Ak7.");
+        tablero[fila][columna] = 1;
     }
 }
+
+
 
 int main()
 {
     int tamTablero = 5;
     matriz tablero = generarTablero(tamTablero);
     llenarTablero(tablero, tamTablero);
-
+    agregarFicha(tablero, 5, (5 - 1), (5 - 1));
     mostrarTablero(tablero, tamTablero);
     return 0;
 }
