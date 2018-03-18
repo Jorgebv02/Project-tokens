@@ -18,9 +18,12 @@ Construido con: Gcc 4.9.
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
+#include <string.h>
 
 typedef int ** matriz;   // Se define un puntero que apunta a punteros que a su vez apuntan a enteros.
 typedef int * ptrEntero; // Puntero que apunta a un valor entero.
+typedef FILE* archivo;   // Puntero sobre el archivo a leer.
 
 // Genera una matriz de nxn de manera dinámica.
 matriz generarTablero(int n){
@@ -124,8 +127,6 @@ void mostrarTablero(matriz tablero, int n){
 }
 
 // Método que indica en cual fila y columna poner una ficha.
-// Nota importante: siempre se le pasa una (fila - 1) y la
-// (columna - 1) porque la matriz va de 0 a 4, no de 1 a 5...
 void agregarFicha(matriz tablero, int n, int fila, int columna){
     // Por aquello de que quieran agregar una ficha en una posición afuera del tablero.
     if ((fila >= n) || (columna >= (n))){
@@ -133,18 +134,123 @@ void agregarFicha(matriz tablero, int n, int fila, int columna){
     }
     // En caso de que las posiciones sean correctas.
     else{
-        tablero[fila][columna] = 1;
+        // Se le pasa con menos porque el tablero va de 0 a 4 y
+        // no de 1 a 5.
+        tablero[fila - 1][columna - 1] = 1;
     }
 }
 
+// Método para poder abrir un archivo.
+void abrirArchivo(){
+    // Variables importantes:
+    char nombreArchivo[50];         // Donde guardar el nombre del archivo.
+    int tamanoTablero;              // Un tamaño para el tablero.
+    int contadorLinea = 0;          // Para contar el número de línea.
+    matriz Tablero;                 // Un tablero a utilizar.
+    char auxiliar;                  // Auxiliar de copiado.
+    char tamanoTableroAuxilar[2];   // Para poder mantener el string del número.
+    int i;                          // Para poder copiar sobre el número.
+    int attero;                     // Para denotar si ya hay más tableros.
+    int filaTablero;                // La fila del tablero.
+    int columnaTablero;             // La columna del tablero.
+    int banderaFila = 0;                // Avisa sobre las filas.
+    int banderaColumna = 0;             // Avisa sobre las columnas.
 
+    // Se pide que ponga el nombre y se lee.
+    // printf("Por favor, ingrese el nombre del archivo que desea abrir:\n>> ");
+    // scanf("%s", &nombreArchivo);
+
+    // Se abre el archivo para lectura.
+    FILE* archivo = fopen("PruebasGrupo1.txt", "r");
+
+    // Si archivo es NULL entonces hubo un error al tratar de abrir el archivo.
+    if(archivo == NULL){
+        printf("Hubo un error con la apertura del archivo.\n\n");
+        return;
+    }
+
+    // Se lee strings de un solo.
+    while(feof(archivo) == 0){
+
+        // Significa que lee un N.
+        if ((contadorLinea % 2) == 0){
+            // Obtenemos el N.
+            auxiliar = fgetc(archivo);
+            tamanoTableroAuxilar[0] = auxiliar;
+            // Se obtiene el resto de valores.
+            auxiliar = fgetc(archivo);
+            tamanoTableroAuxilar[1] = auxiliar;
+            auxiliar = fgetc(archivo);
+
+        // Obtenemos el N entero.
+        tamanoTablero = atoi(tamanoTableroAuxilar);
+
+        // En caso de que ya exista un tablero.
+        if (attero == 1){
+            liberarTablero(Tablero, tamanoTablero);
+        }
+        // Ahora se crea el tablero.
+        Tablero = generarTablero(tamanoTablero);
+        llenarTablero(Tablero, tamanoTablero);
+        mostrarTablero(Tablero, tamanoTablero);
+
+        // Se indica que ya ha sido creado y
+        // se incrementa el contador de línea.
+        attero = 1;
+        contadorLinea++;
+
+        }
+        // Son posiciones Fila y Columna.
+        else{
+
+            // Puesto que el número de fichas varía, es necesario un ciclo.
+            while (auxiliar != '\n'){
+                auxiliar = fgetc(archivo);
+
+                // Significa que están al mismo punto.
+                if (banderaFila == banderaColumna){
+                    filaTablero = atoi(auxiliar);
+                    banderaFila++;
+                }
+
+                else{
+                    columnaTablero = atoi(auxiliar);
+                    banderaColumna++;
+                    // Agrega las fichas.
+                    agregarFicha(Tablero, tamanoTablero, filaTablero, columnaTablero);
+                }
+
+                auxiliar = fgetc(archivo);
+
+
+            }
+
+                contadorLinea++;
+                banderaFila = 0;
+                banderaColumna = 0;
+        }
+    }
+
+    fclose(archivo); // Se cierra el archivo.
+
+}
 
 int main()
 {
-    int tamTablero = 5;
-    matriz tablero = generarTablero(tamTablero);
-    llenarTablero(tablero, tamTablero);
-    agregarFicha(tablero, 5, (5 - 1), (5 - 1));
-    mostrarTablero(tablero, tamTablero);
+    abrirArchivo();
+    // int tamTablero = 5;
+    // matriz tablero = generarTablero(tamTablero);
+    // llenarTablero(tablero, tamTablero);
+    // agregarFicha(tablero, 5, 1, 2);
+    // agregarFicha(tablero, 5, 2, 4);
+    // agregarFicha(tablero, 5, 3, 4);
+    // agregarFicha(tablero, 5, 5, 1);
+    // agregarFicha(tablero, 5, 5, 3);
+
+    // mostrarTablero(tablero, tamTablero);
     return 0;
+
 }
+
+
+// TIENE VARIABLES GLOBALES. CAMBIAR ESTO!

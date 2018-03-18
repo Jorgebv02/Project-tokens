@@ -3,7 +3,9 @@
 	<stdio.h>
 	<stdlib.h>
 
-1521055230 source:c:\users\jorge\documents\github\project-tokens\main.c
+1521359340 source:c:\users\jorge\documents\github\project-tokens\main.c
 	<stdio.h>
 	<stdlib.h>
+	<ctype.h>
+	<string.h>
 
