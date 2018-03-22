@@ -132,6 +132,10 @@ void agregarFicha(matriz tablero, int n, int fila, int columna){
         printf("f: %i c: %i", fila, columna);
         printf("Esa posicion no existe en el tablero.\n");
     }
+
+    if (tablero[fila - 1][columna - 1] == 1){
+        printf("Ya hay una ficha en esta posición.");
+    }
     // En caso de que las posiciones sean correctas.
     else{
         tablero[fila - 1][columna - 1] = 1;
@@ -242,18 +246,44 @@ void abrirArchivo(){
 }
 
 // Método que revisa el archivo.
+// Revisa si las dimnesiones de las fichas son las mismas que
+// vienen en el archivo, es decir, si el archivo brindase una
+// matriz de tamaño 5, deberían de venir 5 posiciones en filas.
 int revisaArchivo(FILE* archivo){
-
 
 }
 
+
+// Método que dado un array y un N, indica si la cantidad de valores
+// dentro del array coincide a: 2*N. Ejemplo: revisaArray(2, [1, 2, 3
+// 4]) = True.
+int revisaArray(int N, int arreglo[]){
+    int contador;
+    int limite = 2 * N;
+    for (contador = 0; contador < limite; contador++){
+        // Si encuentra un 0, entonces no cumplió.
+        printf("%d", arreglo[contador]);
+
+        if (arreglo[contador] == 0){
+            return 0;
+        }
+    }
+    // Cuando sale del for, significa que no encontró problemas.
+    return 1;
+}
+
+
 int main()
 {
-    abrirArchivo();
+      abrirArchivo();
 //    int tamTablero = 5;
 //    matriz tablero = generarTablero(tamTablero);
 //    llenarTablero(tablero, tamTablero);
 //    agregarFicha(tablero, 5, (5 - 1), (5 - 1));
 ////    mostrarTablero(tablero, tamTablero);
+
+// int ar[2] = {1};
+// revisaArray(1, ar);
+
     return 0;
 }
