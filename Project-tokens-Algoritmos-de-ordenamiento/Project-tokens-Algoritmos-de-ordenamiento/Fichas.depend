@@ -9,3 +9,50 @@
 	<ctype.h>
 	<string.h>
 
+1521906648 source:c:\users\yeric\desktop\project-tokens-algoritmos-de-ordenamiento\project-tokens-algoritmos-de-ordenamiento\main.c
+	<stdio.h>
+	<stdlib.h>
+	"ManejoArchivos.h"
+
+1521906484 c:\users\yeric\desktop\project-tokens-algoritmos-de-ordenamiento\project-tokens-algoritmos-de-ordenamiento\manejoarchivos.c
+	<stdio.h>
+	<stdlib.h>
+	"AlgoritmoBusqueda.h"
+
+1521905512 c:\users\yeric\desktop\project-tokens-algoritmos-de-ordenamiento\project-tokens-algoritmos-de-ordenamiento\algoritmobusqueda.c
+	<stdio.h>
+	<stdlib.h>
+	"Tablero.c"
+	<math.h>
+
+1521905447 c:\users\yeric\desktop\project-tokens-algoritmos-de-ordenamiento\project-tokens-algoritmos-de-ordenamiento\tablero.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+
+1521908868 source:c:\users\yeric\desktop\project-tokens-algoritmos-de-ordenamiento\project-tokens-algoritmos-de-ordenamiento\manejoarchivos.c
+	<stdio.h>
+	<stdlib.h>
+	"AlgoritmoBusqueda.h"
+
+1521906798 source:c:\users\yeric\desktop\project-tokens-algoritmos-de-ordenamiento\project-tokens-algoritmos-de-ordenamiento\tablero.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	"Tablero.h"
+
+1521906553 c:\users\yeric\desktop\project-tokens-algoritmos-de-ordenamiento\project-tokens-algoritmos-de-ordenamiento\algoritmobusqueda.h
+	"Tablero.h"
+
+1521908482 source:c:\users\yeric\desktop\project-tokens-algoritmos-de-ordenamiento\project-tokens-algoritmos-de-ordenamiento\algoritmobusqueda.c
+	<stdio.h>
+	<stdlib.h>
+	"Tablero.h"
+	<math.h>
+
+1521906798 c:\users\yeric\desktop\project-tokens-algoritmos-de-ordenamiento\project-tokens-algoritmos-de-ordenamiento\tablero.h
+
+1521906648 c:\users\yeric\desktop\project-tokens-algoritmos-de-ordenamiento\project-tokens-algoritmos-de-ordenamiento\manejoarchivos.h
+
