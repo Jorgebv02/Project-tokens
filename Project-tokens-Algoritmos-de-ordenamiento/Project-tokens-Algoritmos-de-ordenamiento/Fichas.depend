@@ -56,3 +56,26 @@
 
 1521906648 c:\users\yeric\desktop\project-tokens-algoritmos-de-ordenamiento\project-tokens-algoritmos-de-ordenamiento\manejoarchivos.h
 
+1521908484 source:e:\project-tokens-algoritmos-de-ordenamiento\project-tokens-algoritmos-de-ordenamiento\algoritmobusqueda.c
+	<stdio.h>
+	<stdlib.h>
+	"Tablero.h"
+	<math.h>
+
+1521906800 e:\project-tokens-algoritmos-de-ordenamiento\project-tokens-algoritmos-de-ordenamiento\tablero.h
+
+1521906650 source:e:\project-tokens-algoritmos-de-ordenamiento\project-tokens-algoritmos-de-ordenamiento\main.c
+	<stdio.h>
+	<stdlib.h>
+	"ManejoArchivos.h"
+
+1521906650 e:\project-tokens-algoritmos-de-ordenamiento\project-tokens-algoritmos-de-ordenamiento\manejoarchivos.h
+
+1521919224 source:e:\project-tokens-algoritmos-de-ordenamiento\project-tokens-algoritmos-de-ordenamiento\manejoarchivos.c
+	<stdio.h>
+	<stdlib.h>
+	"AlgoritmoBusqueda.h"
+
+1521906554 e:\project-tokens-algoritmos-de-ordenamiento\project-tokens-algoritmos-de-ordenamiento\algoritmobusqueda.h
+	"Tablero.h"
+

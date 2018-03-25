@@ -125,8 +125,7 @@ int revisaArchivo(FILE* archivo){
 // 4]) = True.
 int revisaArray(int N, int arreglo[]){
     int contador;
-    int limite = 2 * N;
-    for (contador = 0; contador < limite; contador++){
+    for (contador = 0; contador < 2*N ; contador++){
         // Si encuentra un 0, entonces no cumplió.
         printf("%d", arreglo[contador]);
 

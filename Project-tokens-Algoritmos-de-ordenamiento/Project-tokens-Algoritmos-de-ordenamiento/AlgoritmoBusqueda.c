@@ -18,7 +18,7 @@
 //********************************************************************************************
 
 void mejor_movimiento(matriz P,int *posi,int *posj,int t, int posC,int posF,int ind){
-    int tempi,tempj,temps;     // tempi :: almacena la posición i de la posible ficha que se va a colocar
+    int tempi,tempj,temps,i,j;     // tempi :: almacena la posición i de la posible ficha que se va a colocar
                                // tempj :: almacena la posición j de la posible ficha que se va a colocar
                                // temps :: almacena la cantidad de movimientos que requiere una determinada
                                //          ficha para moverse a las posiciones requeridas
@@ -28,8 +28,8 @@ void mejor_movimiento(matriz P,int *posi,int *posj,int t, int posC,int posF,int 
     xi = 0; xj = t-1;         // se inicia en la posicion (0,t-1), que es la primera posicion de derecha a izquierda
 
     //Se recorre el tablero para buscar las fichas que esten disponibles
-    for(int i = 0; i < t; i++){
-        for(int j = 0; j <t; j++){
+    for(i = 0; i < t; i++){
+        for(j = 0; j <t; j++){
 
             if(((i != posF && ind == 0) // En el caso Horizontal, se verifica que la ficha no sea una que ya esté acomodada en la fila.
                 || (j != posC && ind == 1) || // En el caso Vertical, se verifica que la ficha no sea una que ya esté acomodada en la columna.
@@ -209,7 +209,7 @@ int AnalisisCasos_Auxiliar(matriz mtemp, int t,int fila,int columna,int *mov_tem
 // La matriz resultante se almacena en Sol(variable que ingresa inicialmente como parámetro).
 //*****************************************************************************************************
 int mejor_caso_diagonal(matriz P, int t,matriz Sol){
-    int temp,temp1,posi,posj,xi,xj;
+    int temp,temp1,posi,posj,xi,xj,i,j;
     temp = 0;        // Guarda los movimientos requeridos en la diagonal izquierda.
     temp1 = 0;       // Guarda los movimientos requeridos en la diagonal derecha.
     xi = 0;
@@ -220,8 +220,8 @@ int mejor_caso_diagonal(matriz P, int t,matriz Sol){
     copiar_matriz(P, mtemp2,t);
 
     //Se recorre el tablero
-    for(int i = 0; i < t; i++){
-        for(int j = 0; j < t; j++){
+    for(i = 0; i < t; i++){
+        for(j = 0; j < t; j++){
             posi = t;        //Posicion temporal i de la ficha que se va a colocar
             posj = t;        //Posicion temporal j de la ficha que se va a colocar
             if(i == j && P[i][j] != 1){   //CASO DIAGONAL IZQUIERDA

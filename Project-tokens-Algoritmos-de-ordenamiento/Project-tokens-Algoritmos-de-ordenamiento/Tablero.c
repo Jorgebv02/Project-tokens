@@ -62,12 +62,11 @@ void mostrarTablero(matriz tablero, int n){
     */
 
     // Contador para poder imprimir el tablero.
-    int contador = n;
     // 3 contadores para poder iterar sobre la matriz.
     int borde, contenido, auxiliar;
 
     // Primer ciclo para imprimir los números del "techo".
-    for (borde = 1; borde <= contador; borde++){
+    for (borde = 1; borde <= n; borde++){
         // Para poder imprimir a la izquierda los números también.
         if (borde == 1){
             printf("     %d   ", borde);
@@ -123,10 +122,11 @@ void agregarFicha(matriz tablero, int n, int fila, int columna){
 }
 
 void copiar_matriz(matriz uno, matriz copia, int t){
-    for(int i = 0 ; i < t ; i ++ ){
-         for(int j = 0 ; j < t ; j ++){
-             copia[i][j] = uno[i][j];
-         }
+    int i,j;
+    for(i = 0 ; i < t ; i++ ){
+            for(j = 0 ; j < t ; j++){
+                copia[i][j] = uno[i][j];
     }
-}
+    }
+    }
 
