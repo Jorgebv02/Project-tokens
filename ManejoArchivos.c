@@ -110,6 +110,16 @@ void abrirArchivo(){
             else{
                 contadorLinea++;
                 columna = atoi(numero);
+
+                // Verifica que la cantidad de posiciones que el archivo posee para
+                // un tablero de dimensión: N, corresponda a 2 * N.
+                if((tamanoTablero * 2) != (fila_columna + 1)){
+                    printf("\nHay un error en la linea %i del archivo!\n", contadorLinea);
+                    printf("Por favor, verifique esa linea y vuelva a intentarlo.\n\n");
+                    goto abrir;
+                    break;
+                }
+
                 // Se crea la matriz que tendra la solución al tablero que se está analizando
                 matriz Solucion = generarTablero(tamanoTablero);
                 // Se agrega la ficha y se muestra el tablero en pantalla.
@@ -132,25 +142,6 @@ void abrirArchivo(){
     fclose(archivo); // Se cierra el archivo.
 }
 
-// Método que revisa el archivo.
-// Revisa si las dimnesiones de las fichas son las mismas que
-// vienen en el archivo, es decir, si el archivo brindase una
-// matriz de tamaño 5, deberían de venir 5 posiciones en filas.
-int revisaArchivo(FILE* archivo){
-    // Variables importantes:
-    ptrEntero posiciones;   // Array para guardar las posiciones.
-    int contadorLinea = 0;  // Para contar el número de línea.
-
-    // Se abre el archivo para lectura.
-//    archivo = fopen("PruebasGrupo1.txt", "r");
-
-    while (feof(archivo) == 0){
-//        if((contadorLinea % 2) == 0){
-//            revisaDimension()
-//        }
-    }
-}
-
 // Método que recibe un valor entero, si está entre 1 a 15 retorna True,
 // si recibe un 0 entonces termina la ejecución del programa y si no retorna
 // False.
@@ -163,19 +154,4 @@ int revisaDimension(int dimension){
     }
 }
 
-// Método que dado un array y un N, indica si la cantidad de valores
-// dentro del array coincide a: 2*N. Ejemplo: revisaArray(2, [1, 2, 3
-// 4]) = True.
-int revisaArray(int N, int arreglo[]){
-    int contador;
-    for (contador = 0; contador < 2*N ; contador++){
-        // Si encuentra un 0, entonces no cumplió.
-        printf("%d", arreglo[contador]);
 
-        if (arreglo[contador] == 0){
-            return 0;
-        }
-    }
-    // Cuando sale del for, significa que no encontró problemas.
-    return 1;
-}

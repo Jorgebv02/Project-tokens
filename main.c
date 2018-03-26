@@ -24,14 +24,6 @@ Construido con: Gcc 4.9.
 int main()
 {
       abrirArchivo();
-//    int tamTablero = 5;
-//    matriz tablero = generarTablero(tamTablero);
-//    llenarTablero(tablero, tamTablero);
-//    agregarFicha(tablero, 5, (5 - 1), (5 - 1));
-////    mostrarTablero(tablero, tamTablero);
-
-// int ar[2] = {1};
-// revisaArray(1, ar);
 
     return 0;
 }

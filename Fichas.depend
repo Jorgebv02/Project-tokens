@@ -3,11 +3,10 @@
 	<stdio.h>
 	<stdlib.h>
 
-1521752811 source:c:\users\jorge\documents\github\project-tokens\main.c
+1522026898 source:c:\users\jorge\documents\github\project-tokens\main.c
 	<stdio.h>
 	<stdlib.h>
-	<ctype.h>
-	<string.h>
+	"ManejoArchivos.h"
 
 1521906648 source:c:\users\yeric\desktop\project-tokens-algoritmos-de-ordenamiento\project-tokens-algoritmos-de-ordenamiento\main.c
 	<stdio.h>
@@ -103,6 +102,31 @@
 	"Tablero.h"
 
 1522015397 source:c:\users\juan diego\desktop\project-tokens-algoritmos-de-ordenamiento\project-tokens-algoritmos-de-ordenamiento\project-tokens-algoritmos-de-ordenamiento\tablero.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	"Tablero.h"
+
+1522026703 source:c:\users\jorge\documents\github\project-tokens\algoritmobusqueda.c
+	<stdio.h>
+	<stdlib.h>
+	"Tablero.h"
+	<math.h>
+
+1522026704 c:\users\jorge\documents\github\project-tokens\tablero.h
+
+1522026704 c:\users\jorge\documents\github\project-tokens\manejoarchivos.h
+
+1522028381 source:c:\users\jorge\documents\github\project-tokens\manejoarchivos.c
+	<stdio.h>
+	<stdlib.h>
+	"AlgoritmoBusqueda.h"
+
+1522026703 c:\users\jorge\documents\github\project-tokens\algoritmobusqueda.h
+	"Tablero.h"
+
+1522026704 source:c:\users\jorge\documents\github\project-tokens\tablero.c
 	<stdio.h>
 	<stdlib.h>
 	<ctype.h>
