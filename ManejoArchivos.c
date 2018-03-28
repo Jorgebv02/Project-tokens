@@ -17,13 +17,17 @@ void abrirArchivo(){
     int fila_columna = 0;    // Contador para verificar los pares (fila, columna).
     int fila, columna;       // Para almacenar cada fila y columna que vengan en el archivo.
 
-    // Se abre el archivo para lectura.
-    FILE* archivo = fopen("PruebasGrupo1.txt", "r");
+    abrir:
+        printf("Ingrese el nombre del archivo que desea abrir: \n>> ");
+        scanf("%s", &nombreArchivo);
+
+        // Se abre el archivo para lectura.
+        FILE* archivo = fopen(nombreArchivo, "r");
 
     // Si archivo es NULL entonces hubo un error al tratar de abrir el archivo.
     if(archivo == NULL){
-        printf("Hubo un error con la apertura del archivo.\n\n");
-        return;
+        printf("\nHubo un error con la apertura del archivo.\nPor favor, verifique el nombre y vuelva a intentarlo.\n\n");
+        goto abrir;
     }
 
     // Se lee el archivo caracter por caracter.
@@ -51,11 +55,26 @@ void abrirArchivo(){
                 liberarTablero(Tablero, tamanoTablero);
             }
 
-            // Se crea el tablero.
-            Tablero = generarTablero(tamanoTablero);
-            llenarTablero(Tablero, tamanoTablero);
-            tableroCreado = 1;
-            contadorLinea++;
+            // Si la dimensión que viene en el archivo está entre 1 y 15
+            if(revisaDimension(tamanoTablero) == 1){
+                // Se crea el tablero.
+                Tablero = generarTablero(tamanoTablero);
+                llenarTablero(Tablero, tamanoTablero);
+                tableroCreado = 1;
+                contadorLinea++;
+            }
+            else if(tamanoTablero == 0){
+                printf("\n********************************\n");
+                printf("**        FIN ARCHIVO         **\n");
+                printf("********************************\n");
+                break;
+            }
+            else{
+                printf("Hay un error en la dimension del tablero en la linea %i del archivo.\n", contadorLinea+1);
+                printf("Por favor, escriba una dimension entre 1 y 15 y vuelva a intentarlo.\n\n");
+                fclose(archivo);
+                goto abrir;
+            }
         }
 
         // Son posiciones Fila y Columna.
@@ -91,15 +110,27 @@ void abrirArchivo(){
             else{
                 contadorLinea++;
                 columna = atoi(numero);
-         // Se crea la matriz que tendra la solución al tablero que se está analizando
+
+                // Verifica que la cantidad de posiciones que el archivo posee para
+                // un tablero de dimensión: N, corresponda a 2 * N.
+                if((tamanoTablero * 2) != (fila_columna + 1)){
+                    printf("\nHay un error en la linea %i del archivo!\n", contadorLinea);
+                    printf("Por favor, verifique esa linea y vuelva a intentarlo.\n\n");
+                    goto abrir;
+                    break;
+                }
+
+                // Se crea la matriz que tendra la solución al tablero que se está analizando
                 matriz Solucion = generarTablero(tamanoTablero);
                 // Se agrega la ficha y se muestra el tablero en pantalla.
                 agregarFicha(Tablero, tamanoTablero, fila, columna);
                 printf("\n********************************\n");
-                printf("**       NUEVO TABLERO        **\n");
+                printf("**       TABLERO CREADO       **\n");
                 printf("********************************\n");
                 mostrarTablero(Tablero, tamanoTablero);
-                printf("\n\n Tablero Solucion: \n");
+                printf("\n********************************\n");
+                printf("**          SOLUCION          **\n");
+                printf("********************************\n");
                 Mejor_Opcion(Tablero,Solucion,tamanoTablero);
                 // Se reinician los contadores.
                 contador = 0;
@@ -111,28 +142,16 @@ void abrirArchivo(){
     fclose(archivo); // Se cierra el archivo.
 }
 
-// Método que revisa el archivo.
-// Revisa si las dimnesiones de las fichas son las mismas que
-// vienen en el archivo, es decir, si el archivo brindase una
-// matriz de tamaño 5, deberían de venir 5 posiciones en filas.
-int revisaArchivo(FILE* archivo){
-
-}
-
-
-// Método que dado un array y un N, indica si la cantidad de valores
-// dentro del array coincide a: 2*N. Ejemplo: revisaArray(2, [1, 2, 3
-// 4]) = True.
-int revisaArray(int N, int arreglo[]){
-    int contador;
-    for (contador = 0; contador < 2*N ; contador++){
-        // Si encuentra un 0, entonces no cumplió.
-        printf("%d", arreglo[contador]);
-
-        if (arreglo[contador] == 0){
-            return 0;
-        }
+// Método que recibe un valor entero, si está entre 1 a 15 retorna True,
+// si recibe un 0 entonces termina la ejecución del programa y si no retorna
+// False.
+int revisaDimension(int dimension){
+    if ((dimension >= 1) && (dimension <= 15)){
+        return 1;
     }
-    // Cuando sale del for, significa que no encontró problemas.
-    return 1;
+    else{
+        return 0;
+    }
 }
+
+

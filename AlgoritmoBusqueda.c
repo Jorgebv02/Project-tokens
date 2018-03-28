@@ -285,7 +285,6 @@ void Mejor_Opcion(matriz tablero, matriz Solucion, int t){
         count++;
     }while(count < 3);
 
-    printf("Solucion: \n");
     mostrarTablero(Solucion,t);
     printf("\n Cantidad de movimientos: %d \n\n", mov);
 }

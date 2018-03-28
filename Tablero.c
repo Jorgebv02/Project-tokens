@@ -108,7 +108,6 @@ void mostrarTablero(matriz tablero, int n){
 void agregarFicha(matriz tablero, int n, int fila, int columna){
     // Por aquello de que quieran agregar una ficha en una posición afuera del tablero.
     if ((fila > n) || (columna > n)){
-        printf("f: %i c: %i", fila, columna);
         printf("Esa posicion no existe en el tablero.\n");
     }
 
